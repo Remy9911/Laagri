@@ -875,6 +875,7 @@
     return { car: { x: mid.x, y: mid.y, vx: 0, vy: 0, idx: mid.i, prog: (lo.car.prog + hi.car.prog) / 2 } };
   }
   function updateCamera(dt, snap) {
+    if (S.peek) { cam.x = S.peek[0]; cam.y = S.peek[1]; cam.zoom = S.peek[2] || 1; return; }
     var L = leaderOf(); if (!L) return;
     if (S.phase === "countdown") { L = packCentre() || L; }
     // keep the leader ~10 m ahead of the centre; feed forward the smoothing lag so the leader still sees the road ahead
@@ -1094,7 +1095,8 @@
       g.rotate(ang);
       var fsz = Math.min(2.4, pt.w * 0.7);
       g.font = "700 " + fsz + "px Fredoka, system-ui, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle";
-      g.fillStyle = "rgba(255,255,255,0.62)"; g.fillText(pt.name, 0, 0);
+      g.lineWidth = fsz * 0.14; g.strokeStyle = "rgba(20,25,30,0.55)"; g.strokeText(pt.name, 0, 0);
+      g.fillStyle = "rgba(255,255,255,0.85)"; g.fillText(pt.name, 0, 0);
       g.restore();
     });
     // start line
@@ -1502,6 +1504,7 @@
     var ti = S.phase === "results" && S.results ? S.results.track : S.nextTrack;
     if (!T || T.ti !== ti) { buildTrack(ti); prefetchTrack(T); }
     idleT += 1 / 60;
+    if (S.peek) { if (!T || T.ti !== (S.peek[3] || 0)) { buildTrack(S.peek[3] || 0); prefetchTrack(T); } cam.x = S.peek[0]; cam.y = S.peek[1]; cam.zoom = S.peek[2] || 1; render(now); return; }
     var p = trackPoint(idleT * 14);
     cam.x += (p.x - cam.x) * 0.05; cam.y += (p.y - cam.y) * 0.05; cam.zoom = 0.8;
     if (Math.hypot(p.x - cam.x, p.y - cam.y) > 300) { cam.x = p.x; cam.y = p.y; }
@@ -1521,7 +1524,7 @@
   if (TEST) {
     window.__lk = {
       S: S, CFG: CFG, players: players, DBG: DBG, get cars() { return cars; }, get T() { return T; }, cam: cam,
-      buildTrack: buildTrack, trackPoint: trackPoint, MAP: MAP, giveItem: function (i, k) { var p = players[i]; p.item = k; sync(p); ev(p, "item", { item: k }); },
+      buildTrack: buildTrack, trackPoint: trackPoint, MAP: MAP, peek: function (x, y, z, ti) { S.peek = x == null ? null : [x, y, z, ti]; }, giveItem: function (i, k) { var p = players[i]; p.item = k; sync(p); ev(p, "item", { item: k }); },
       fps: function () { return 0; }
     };
   }
