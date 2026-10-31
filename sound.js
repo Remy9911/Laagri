@@ -38,6 +38,7 @@
     pickup: function (t) { [880, 1175, 1568].forEach(function (f, i) { tone(t + i * 0.05, f, f, 0.08, 0.13, "square"); }); },
     turbo: function (t) { noise(t, 0.6, 400, 3000, 0.4, "bandpass"); tone(t, 180, 520, 0.5, 0.12, "sawtooth"); },
     mega: function (t) { noise(t, 1.0, 300, 4000, 0.45, "bandpass"); tone(t, 140, 700, 0.9, 0.14, "sawtooth"); },
+    jump: function (t) { tone(t, 220, 660, 0.3, 0.13, "triangle"); noise(t, 0.25, 800, 2000, 0.15); },
     pad: function (t) { tone(t, 400, 900, 0.25, 0.1, "sawtooth"); },
     rocket: function (t) { noise(t, 0.5, 2500, 600, 0.35, "bandpass"); },
     boom: function (t) { noise(t, 0.55, 900, 60, 0.6, "lowpass"); tone(t, 120, 40, 0.4, 0.3, "sine"); },

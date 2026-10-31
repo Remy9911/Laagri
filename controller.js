@@ -182,6 +182,12 @@
     if (st.view !== "race") { $("danger").classList.add("hidden"); }
     show("race");
   }
+  var hintTimer = null;
+  function hint(text) {
+    var h = $("rHint"), keep = h.innerHTML;
+    h.innerHTML = "<b>" + LK.escapeHtml(text) + "</b>"; h.classList.add("alert");
+    clearTimeout(hintTimer); hintTimer = setTimeout(function () { h.classList.remove("alert"); setItem(st.item); }, 1400);
+  }
   var dangerTimer = null;
   function flash(color) { var f = $("flash"); f.style.background = color; f.classList.remove("go"); void f.offsetWidth; f.classList.add("go"); }
   function onEvent(d) {
@@ -189,7 +195,9 @@
       case "go": flash("rgba(93,240,154,0.7)"); buzz(60); break;
       case "item": setItem(d.item); flash(LK.ITEMS[d.item].color); buzz(40); break;
       case "used": setItem(null); break;
-      case "hit": flash("rgba(255,80,80,0.75)"); buzz(220); break;
+      case "hit": flash("rgba(255,80,80,0.75)"); buzz(220); if (d.what === "ped") hint("Don't touch the pedestrians!"); else if (d.what === "rocket") hint("Rocket hit!"); else if (d.what === "oil") hint("Oil slick!"); break;
+      case "rescue": flash("rgba(40,180,255,0.6)"); buzz(80); hint("CATCH-UP BOOST!"); break;
+      case "jump": buzz(40); break;
       case "shieldsaved": flash("rgba(46,196,255,0.7)"); buzz(60); break;
       case "danger":
         $("danger").classList.remove("hidden"); buzz(90);
