@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laagri Karts</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root { --gold: #ffcf4a; --muted: rgba(225,236,250,0.75); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: "Fredoka", system-ui, sans-serif; font-weight: 500; color: #fff;
+    background: #2c4a2c radial-gradient(120% 90% at 50% 0%, #4f8a46 0%, #1d321d 70%);
+    display: flex; align-items: center; justify-content: center; padding: 24px 16px;
+  }
+  .card { width: min(780px, 100%); padding: clamp(24px, 5vw, 48px); border-radius: 32px; background: rgba(12, 22, 36, 0.72); border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 30px 80px rgba(0,0,0,0.35); }
+  .top { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .cars { display: flex; gap: 6px; }
+  .cars svg { width: 30px; height: auto; transform: rotate(-12deg); filter: drop-shadow(0 4px 5px rgba(0,0,0,0.4)); }
+  h1 { margin: 0; font-weight: 700; font-size: clamp(46px, 9vw, 80px); line-height: 0.95; letter-spacing: -0.01em; }
+  h1 span { color: var(--gold); }
+  .tag { color: var(--muted); letter-spacing: 0.2em; font-weight: 600; font-size: 13px; margin-top: 8px; }
+  .play { display: block; margin: 28px 0 8px; padding: 22px; border-radius: 22px; text-align: center; text-decoration: none; font-size: 30px; font-weight: 700; letter-spacing: 0.04em; color: #04301a; background: linear-gradient(180deg, #5df09a, #2cc56c); box-shadow: 0 8px 0 #1f9452, 0 16px 30px rgba(0,0,0,0.3); }
+  .play:active { transform: translateY(5px); box-shadow: 0 3px 0 #1f9452; }
+  .small { text-align: center; color: var(--muted); font-size: 14px; }
+  ol { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; }
+  li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,0.07); line-height: 1.35; }
+  li b { color: #fff; }
+  li span.n { flex: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; background: var(--gold); color: #2a1c00; }
+  li div { color: var(--muted); }
+  .tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; }
+  .t { padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,0.07); font-size: 14px; color: var(--muted); border-left: 5px solid var(--c); }
+  .t b { display: block; font-size: 17px; margin-bottom: 2px; color: #fff; }
+  @media (max-width: 600px) { .tracks { grid-template-columns: 1fr; } }
+  footer { margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="top">
+    <div class="cars" id="cars"></div>
+    <div><h1>LAAGRI <span>KARTS</span></h1><div class="tag">1–8 DRIVERS · PHONES AS CONTROLLERS · REAL LAAGRI STREETS</div></div>
+  </div>
+
+  <a class="play" id="play" href="https://www.airconsole.com/">PLAY ON AIRCONSOLE</a>
+  <div class="small">Opens AirConsole in this browser. Chrome on a laptop connected to the TV works best.</div>
+
+  <ol>
+    <li><span class="n">1</span><div><b>Big screen:</b> connect the laptop to the TV (HDMI), press Play above and go fullscreen with <b>F11</b>. Click once on the page to turn on sound.</div></li>
+    <li><span class="n">2</span><div><b>Phones:</b> everyone opens <b>airconsole.com</b> (or the AirConsole app), types the code from the TV and turns the phone sideways.</div></li>
+    <li><span class="n">3</span><div><b>Lobby:</b> vote a track and tap <b>READY</b>. The first phone is the host and sets battle length (2/3/5 min) and CPU drivers.</div></li>
+    <li><span class="n">4</span><div><b>Drive:</b> cars go by themselves. Steer with ◀ ▶, <b>BRAKE</b> for tight corners, <b>BOOST</b> fires the item you grabbed from a <b>?</b> box (turbo, mega turbo, rocket, oil, shield). Yellow arrows on the road are free boosts.</div></li>
+    <li><span class="n">5</span><div><b>Win:</b> the camera follows the leader. Fall off the TV screen and you're out. Last car left wins the heat; everyone restarts there, with the heat winner at the back of the grid. Most heat wins when the clock runs out wins the battle.</div></li>
+  </ol>
+
+  <div class="tracks">
+    <div class="t" style="--c:#ff6b3d"><b>Veskitammi Ring</b>Vae · Veskitammi · Kuuse · Kuuse põik — 2,7 km</div>
+    <div class="t" style="--c:#3d8bff"><b>Saku–Laagri Express</b>Hoiu · Saku–Laagri tee · Instituudi tee · Veskitammi — 4,1 km</div>
+    <div class="t" style="--c:#2ed573"><b>Kuuse Loop</b>Vae · Kuuse · Kuuse põik — 1,9 km</div>
+  </div>
+
+  <footer>
+    Private party game. Streets, buildings and place names: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL).<br>
+    Sound and graphics are generated in the browser.
+  </footer>
+</main>
+<script src="common.js"></script>
+<script>
+  (function () {
+    var base = location.origin + location.pathname.replace(/[^/]*$/, "");
+    if (/^https?:/.test(base)) document.getElementById("play").href = "https://www.airconsole.com/#" + base;
+    var h = ""; [0, 1, 2, 3].forEach(function (i) { var s = LK.SLOTS[i]; h += LK.carSvg(s.color, s.dark); });
+    document.getElementById("cars").innerHTML = h;
+  })();
+</script>
+</body>
+</html>

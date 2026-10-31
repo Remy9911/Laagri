@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Laagri Karts controller</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="controller.css">
+  <script src="https://www.airconsole.com/api/airconsole-1.11.0.js"></script>
+</head>
+<body>
+  <section id="vWait" class="view center">
+    <div class="spinner"></div>
+    <div class="muted">Connecting to Laagri…</div>
+  </section>
+
+  <section id="vFull" class="view center hidden">
+    <div class="big">Grid is full</div>
+    <div class="muted">8 drivers max — you can join after this battle.</div>
+  </section>
+
+  <!-- lobby / results -->
+  <section id="vLobby" class="view hidden">
+    <div class="lcol left">
+      <div class="me">
+        <div class="meCar" id="lCar"></div>
+        <div class="meText">
+          <div id="lName" class="meName"></div>
+          <div id="lTitle" class="meTitle"></div>
+          <div id="lSub" class="meSub"></div>
+        </div>
+      </div>
+      <div id="resWrap" class="hidden"><div id="resList"></div></div>
+      <button id="readyBtn" type="button"><span>READY</span></button>
+    </div>
+    <div class="lcol right">
+      <div class="label">VOTE THE TRACK</div>
+      <div id="tracks"></div>
+      <div id="hostBox" class="hidden">
+        <div class="label">HOST SETTINGS</div>
+        <div class="seg" id="segLen"></div>
+        <div class="seg" id="segCpu"></div>
+      </div>
+      <div id="setInfo" class="setInfo"></div>
+    </div>
+  </section>
+
+  <!-- driving -->
+  <section id="vRace" class="view race hidden">
+    <div id="steer">
+      <div class="pad" id="padL"><svg viewBox="0 0 24 24"><path d="M15.5 4 7 12l8.5 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="pad" id="padR"><svg viewBox="0 0 24 24"><path d="M8.5 4 17 12l-8.5 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="mid">
+      <div class="rMe"><span id="rDot" class="dot"></span><span id="rName"></span></div>
+      <div id="rWins" class="rWins"></div>
+      <div id="rItem" class="rItem"><div class="iic" id="rItemIc"></div><div id="rItemName">NO ITEM</div></div>
+      <div id="rHint" class="rHint">Grab a <b>?</b> box</div>
+    </div>
+    <div class="actions">
+      <div class="act" id="btnBoost"><div class="bic" id="boostIc"></div><span>BOOST</span></div>
+      <div class="act" id="btnBrake"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3" fill="currentColor"/></svg><span>BRAKE</span></div>
+    </div>
+    <div id="flash"></div>
+    <div id="danger" class="hidden"><div>BACK ON SCREEN!</div></div>
+    <div id="cover" class="cover hidden"><div id="coverBig" class="big">You're out!</div><div id="coverSub" class="muted">Watch the TV — next heat soon.</div></div>
+  </section>
+
+  <script src="common.js"></script>
+  <script src="controller.js"></script>
+</body>
+</html>
